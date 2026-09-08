@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./dist-DhnJtIXD.js";var n=e();function r({className:e,...r}){return(0,n.jsx)(`label`,{className:t(`text-xs font-medium tracking-wide text-muted`,e),...r})}export{r as t};

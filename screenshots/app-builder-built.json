@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 2380,
+      "bodyTextHash": "4f4a47b317637142fa2a8a444723d3534ba52ca2ef78a3d5c8b31940d75b67f0",
+      "bodyTextPrefix": "CASA TripleJ SHOP STREET GORRAS VAULT TRADE THE HOUSE CASA TRIPL",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 2323,
+      "bodyTextHash": "42c0b448708784e7cfeb98a402fcf4542c83e3b8b381ea434506efa1a17f9911",
+      "bodyTextPrefix": "CASA TripleJ CASA TRIPLEJ · DENVER From the bottom. Built like k",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

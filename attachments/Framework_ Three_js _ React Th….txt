@@ -1,0 +1,46 @@
+Framework: Three.js / React Three Fiber (R3F) with ⁠@react-three/drei⁠ and ⁠@react-three/postprocessing⁠.
+ Perspective: Fixed initial camera at ⁠[0, 1.4, 4.5]⁠, looking towards ⁠[0, 1.2, 0]⁠ with a ⁠FOV of 50°⁠.
+ Controls: OrbitControls clamped to horizontal orbit (⁠minAzimuthAngle: -0.35⁠, ⁠maxAzimuthAngle: 0.35⁠) and vertical orbit (⁠minPolarAngle: Math.PI/2.4⁠, ⁠maxPolarAngle: Math.PI/1.9⁠) with enabled smooth damping (⁠dampingFactor: 0.05⁠).
+Spatial Layout & Placement
+ Storefront Facade & Signage: Centered at ⁠[0, 2.8, -1.5]⁠. Massive 3D extrusion lettering reading LA CASA TRIPLE J with subtext MONTROSE and script italic Dios sobre todo.
+ Left Display Island (Danddy & Barbas Hats): Positioned at ⁠[-2.2, 0.4, 0.5]⁠, angled inward at ⁠rotation: [0, 0.25, 0]⁠. Features a low-profile, illuminated glass jewelry showcase displaying 3 caps with floating interactive anchor tags.
+ Center Shrine (Focal Altar): Positioned at ⁠[0, 0, -1.8]⁠. Recessed baroque niche with arched gold molding housing the statue and back-illuminated religious canvas.
+ Right Display Island (BAPE x Coach & Collabs): Positioned at ⁠[2.2, 0.4, 0.5]⁠, angled inward at ⁠rotation: [0, -0.25, 0]⁠. Marble plinth with glass vitrines highlighting bags, sneakers, and limited edition caps.
+ Flanking Curtains: Left drape anchored at ⁠[-3.5, 2.0, 0]⁠, right drape anchored at ⁠[3.5, 2.0, 0]⁠, sweeping down to floor level to frame the entire viewport.
+ Street Exterior: Visible on the left edge (⁠x < -4.0⁠), wet asphalt street with a vertical neon sign glowing turquoise reading MIAMI.
+Textures & PBR Materials
+ Floor: Black Marquina marble with white veining. High gloss finish (⁠roughness: 0.08⁠, ⁠metalness: 0.2⁠, ⁠clearcoat: 1.0⁠, normal map for micro-surface imperfections and wet-look water sheen).
+ Signage & Accents: Brushed aged gold (⁠color: #D4AF37⁠, ⁠metalness: 0.9⁠, ⁠roughness: 0.25⁠, bump map for subtle chiseled edges).
+ Velvet Drapes: Deep black/charcoal velvet (⁠roughness: 0.95⁠, ⁠metalness: 0.05⁠, strong sheen/velvet shader node for rim highlights).
+ Display Cases: Smoked tempered glass (⁠transmission: 0.95⁠, ⁠opacity: 1⁠, ⁠transparent: true⁠, ⁠ior: 1.52⁠, ⁠roughness: 0.05⁠) with internal edge-lit LED strips (⁠emissive: #FFE8A3⁠, ⁠emissiveIntensity: 3.0⁠).
+ Products:
+ Hats: Cotton twill base fabric (⁠roughness: 0.85⁠), 3D puff embroidery normal maps (⁠metalness: 0.1⁠), satin inner brims.
+ BAPE x Coach Collabs: Signature monogram jacquard pattern (⁠roughness: 0.6⁠) overlaid with green/brown BAPE 1st Camo leather accents (⁠roughness: 0.35⁠).
+Lighting & Atmosphere
+ Environment Map: Low-contrast nighttime urban HDRI set to ⁠0.3⁠ intensity.
+ Key Lighting: Warm spotlight (⁠#FFF4D4⁠, intensity ⁠4.5⁠, penumbra ⁠0.4⁠) focused directly down onto the central shrine.
+ Showcase Uplights: Subtle spot downlights (⁠#FFFFFF⁠, intensity ⁠3.0⁠, narrow cone) directly above each hat plinth.
+ Accent Neon: Cyan/Turquoise point light (⁠#00F5D4⁠, intensity ⁠2.5⁠) positioned at the exterior neon sign to cast blue rim light on wet pavement.
+ Lantern Accent: Warm tungsten wall sconce (⁠#FFA834⁠, intensity ⁠2.0⁠) mounted on the right facade pillar.
+Animations & Micro-Interactions
+ Idle Breathing: Displayed hats float with a gentle sine-wave bobbing effect (⁠Math.sin(clock.elapsedTime * 1.5) * 0.03⁠) and a slow, continuous ⁠360°⁠ turntable rotation (⁠0.005 rad/frame⁠).
+ Raycast Hover State:
+ Hovering over any hat or bag triggers a smooth mesh scale-up (⁠scale: 1.08⁠, spring transition via GSAP or ⁠@react-spring/three⁠).
+ Uplight intensity behind the hovered item ramps up by 30%.
+ A 2D floating UI tooltip fades in above the product displaying: Item Name, "Quick View", and Price in USD.
+ Click / Inspect Transition:
+ Clicking an item animates the camera smoothly from the storefront view to a macro close-up (⁠camera.position.lerp⁠ to ⁠[target.x, target.y + 0.1, target.z + 0.8]⁠).
+ Side glass panes slide open via linear translation along the X axis.
+ Background elements dim (⁠postprocessing dark vignette ramps up to 0.7⁠).
+Post-Processing Pipeline
+ UnrealBloomPass: ⁠threshold: 0.75⁠, ⁠strength: 0.45⁠, ⁠radius: 0.6⁠ (creates a controlled glow around neon signs and display LED strips without washing out dark tones).
+ SSR (Screen Space Reflections): Enabled for the wet floor to mirror neon reflections and illuminated showcases.
+ LUT / Color Grading: Cinematic contrast LUT boosting deep blacks and warm gold midtones (⁠contrast: 1.15⁠, ⁠saturation: 1.05⁠).
+ Vignette: Darkness ⁠0.6⁠, offset ⁠0.25⁠ to maintain the spotlight/theater illusion.
+Overlay GUI (HTML/Drei ⁠<Html/>⁠)
+ Top Right Navigation: Floating pill-shaped glassmorphism buttons (⁠background: rgba(20, 20, 20, 0.65)⁠, ⁠border: 1px solid #D4AF37⁠, ⁠backdrop-filter: blur(8px)⁠):
+ ⁠COLLECTIONS⁠
+ ⁠HAT SHOP⁠
+ ⁠STREETWEAR COLLABS⁠
+ ⁠CART (0)⁠
+ Bottom Showcase Carousel: Minimalist horizontal pill row displaying miniature thumb icons of active shelf items, linked to programmatic camera pans.

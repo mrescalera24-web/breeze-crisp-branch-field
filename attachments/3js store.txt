@@ -1,0 +1,6 @@
+Built it as a self-contained site — open the file and it renders live. A few notes on how I translated the spec:
+
+	•	Engine: plain Three.js (r128) rather than R3F/drei/postprocessing, since those aren't available as importable libraries in this environment. Everything from the spec — camera clamps, shrine, both display islands, curtains, Miami street glimpse, gold/velvet/glass materials — is built with core Three.js instead.
+	•	Camera: fixed start at [0, 1.4, 4.5] looking at [0, 1.2, 0], drag-to-orbit clamped to your azimuth/polar ranges with damping.
+	•	Post-processing: bloom/vignette/color-grade are faked with CSS (screen-blend glow blobs tracking the neon sign and shrine, a radial vignette that deepens on inspect, contrast/saturate filter on the canvas) instead of a full EffectComposer chain.
+	•	Interactions: tap a hat or collab piece → tooltip with name/price/Add to cart; "Inspect" zooms the camera in exactly like the camera.position.lerp behavior you specified, slides the vitrine glass open, and deepens the vignette; top-right pills pan to each collection; bottom carousel jumps straight to a product.

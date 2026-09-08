@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/shop",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 1662,
+      "bodyTextHash": "fa36d866b4b9d6f5c6cf38251ec36ebf95f418e61c7e85a880542d45e2632d3c",
+      "bodyTextPrefix": "CASA TripleJ SHOP STREET GORRAS VAULT TRADE THE HOUSE THE COLLEC",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/shop-gorras.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 1621,
+      "bodyTextHash": "0090c287bbd5901f6a94efa60369cc464067d94356522f4d507eca3feea6ea24",
+      "bodyTextPrefix": "CASA TripleJ THE COLLECTION Collection The full house — street, ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/shop-gorras-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/shop-gorras.json"
+}

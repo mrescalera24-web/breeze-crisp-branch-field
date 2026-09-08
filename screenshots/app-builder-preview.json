@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 107,
+      "bodyTextHash": "364c389edb050557e085c338cd85d37d5921fbd7fae17449395509a0636a0328",
+      "bodyTextPrefix": "LA CASA TripleJ COLLECTIONS HAT SHOP STREET SHOP LA CASA TripleJ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Casa TripleJ",
+      "hasCanvas": false,
+      "bodyTextLen": 107,
+      "bodyTextHash": "364c389edb050557e085c338cd85d37d5921fbd7fae17449395509a0636a0328",
+      "bodyTextPrefix": "LA CASA TripleJ COLLECTIONS HAT SHOP STREET SHOP LA CASA TripleJ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

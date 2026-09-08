@@ -1,0 +1,786 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg: #0c0b0a;
+  --color-surface: #141210;
+  --color-elevated: #1c1916;
+  --color-fg: #f4ead8;
+  --color-muted: #b9a894;
+  --color-subtle: #7a6f62;
+  --color-border: #2e2923;
+  --color-accent: #3ee8d4;
+  --color-accent-fg: #041412;
+  --color-brand: #c4122f;
+  --color-brand-fg: #fff4f2;
+  --color-gold: #d4b06a;
+  --color-gold-fg: #1a1408;
+  --color-spray: #3ee8d4;
+  --color-vice: #d4b06a;
+  --color-ice: #3ee8d4;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --text-kicker: 0.6875rem;
+  --text-micro: 0.625rem;
+  --tracking-kicker: 0.28em;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --aspect-portrait: 3/4;
+  --shadow-border: 0 0 0 1px color-mix(in oklab, var(--color-gold) 22%, transparent);
+  --shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--color-gold) 60%, transparent);
+  --shadow-neon: 0 0 28px color-mix(in oklab, var(--color-gold) 45%, transparent);
+  --shadow-aqua: 0 0 28px color-mix(in oklab, var(--color-accent) 45%, transparent);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    line-height: 1.08;
+    font-weight: 500;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    outline: 1px solid color-mix(in oklab, var(--color-gold) 20%, transparent);
+    outline-offset: -1px;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 70%, black);
+    color: var(--color-fg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.img-flush {
+  outline: none;
+}
+
+.scrim {
+  background: color-mix(in oklab, var(--color-bg) 78%, transparent);
+}
+
+.neon-gold {
+  color: var(--color-gold);
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--color-gold) 80%, transparent),
+    0 0 24px color-mix(in oklab, var(--color-gold) 55%, transparent),
+    0 0 48px color-mix(in oklab, var(--color-gold) 35%, transparent);
+}
+
+.neon-miami {
+  color: var(--color-accent);
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--color-accent) 80%, transparent),
+    0 0 24px color-mix(in oklab, var(--color-accent) 50%, transparent),
+    0 0 48px color-mix(in oklab, var(--color-accent) 30%, transparent);
+}
+
+.neon-rojo {
+  color: var(--color-gold);
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--color-gold) 80%, transparent),
+    0 0 24px color-mix(in oklab, var(--color-gold) 50%, transparent);
+}
+
+.neon-ice,
+.neon-spray {
+  color: var(--color-accent);
+  text-shadow:
+    0 0 8px color-mix(in oklab, var(--color-accent) 80%, transparent),
+    0 0 24px color-mix(in oklab, var(--color-accent) 50%, transparent);
+}
+
+.lockup-kicker {
+  font-family: var(--font-display);
+  letter-spacing: 0.42em;
+  font-weight: 500;
+}
+
+.header-rule {
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, var(--color-gold) 55%, transparent),
+    0 2px 12px 0 color-mix(in oklab, var(--color-gold) 18%, transparent);
+}
+
+.glow-gold {
+  box-shadow:
+    0 0 24px color-mix(in oklab, var(--color-gold) 35%, transparent),
+    0 0 60px color-mix(in oklab, var(--color-gold) 18%, transparent);
+}
+
+.glow-miami {
+  box-shadow:
+    0 0 24px color-mix(in oklab, var(--color-accent) 40%, transparent),
+    0 0 60px color-mix(in oklab, var(--color-accent) 18%, transparent);
+}
+
+.curtain-hit {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: var(--color-bg);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.curtain-hit.is-open {
+  background: transparent;
+}
+
+.curtain-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  transition: opacity 400ms ease-out;
+}
+
+.curtain-copy.is-open {
+  opacity: 0;
+}
+
+.curtain-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-gold);
+  color: var(--color-gold-fg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  box-shadow:
+    0 0 24px color-mix(in oklab, var(--color-gold) 35%, transparent),
+    0 0 60px color-mix(in oklab, var(--color-gold) 18%, transparent);
+}
+
+.curtain-rod,
+.curtain-tassel,
+.curtain-panel {
+  pointer-events: none;
+}
+
+.curtain-rod {
+  position: absolute;
+  top: 14px;
+  right: 3%;
+  left: 3%;
+  z-index: 24;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-gold) 88%, white) 0%,
+    var(--color-gold) 38%,
+    color-mix(in oklab, var(--color-gold) 50%, black) 72%,
+    var(--color-gold) 100%
+  );
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.55);
+}
+
+.curtain-finial {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in oklab, var(--color-gold) 80%, white),
+    var(--color-gold) 45%,
+    color-mix(in oklab, var(--color-gold) 40%, black)
+  );
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.5);
+  transform: translateY(-50%);
+}
+
+.curtain-finial-left {
+  left: -10px;
+}
+
+.curtain-finial-right {
+  right: -10px;
+}
+
+.curtain-panel {
+  top: 0;
+  width: 48%;
+  overflow: hidden;
+  z-index: 4;
+  transition: transform 900ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform;
+}
+
+.curtain-left {
+  transform: translateX(0);
+}
+
+.curtain-right {
+  transform: translateX(0);
+}
+
+.curtain-left.is-open {
+  transform: translateX(-92%);
+}
+
+.curtain-right.is-open {
+  transform: translateX(92%);
+}
+
+.curtain-folds {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.curtain-folds.is-mirror .curtain-fold {
+  transform: scaleX(-1);
+}
+
+.curtain-fold {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  background:
+    url("/scenes/room/velvet.jpg") center / 900% 120% no-repeat,
+    #0c0c12;
+  box-shadow:
+    inset -10px 0 14px rgb(0 0 0 / 0.55),
+    inset 8px 0 10px rgb(0 0 0 / 0.22);
+}
+
+.curtain-ring {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 5;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-gold);
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.6);
+  transform: translateX(-50%);
+}
+
+.curtain-carrier {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 2px;
+  height: 18px;
+  background: var(--color-gold);
+  transform: translateX(-50%);
+  opacity: 0.85;
+}
+
+.curtain-tassel {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 8;
+  width: 3px;
+  height: 22%;
+  background: linear-gradient(var(--color-gold), color-mix(in oklab, var(--color-gold) 40%, black));
+  transform: translateX(-50%);
+  transition:
+    transform 900ms cubic-bezier(0.2, 0, 0, 1),
+    opacity 500ms ease-out;
+}
+
+.curtain-tassel::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  width: 18px;
+  height: 34px;
+  border-radius: 0 0 10px 10px;
+  background: repeating-linear-gradient(90deg, var(--color-gold) 0 2px, transparent 2px 4px);
+  transform: translateX(-50%);
+}
+
+.curtain-tassel.is-open {
+  transform: translateX(-50%) translateY(-120%);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-panel,
+  .curtain-tassel {
+    transition-duration: 1ms;
+    transition-delay: 0ms !important;
+  }
+}
+
+html.house-3d-lock,
+html.house-3d-lock body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.house-3d {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  background:
+    url("/scenes/room/card.jpg") center / cover no-repeat,
+    #07080c;
+  touch-action: none;
+}
+
+.house-3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.house-3d canvas.is-locked {
+  pointer-events: none;
+}
+
+.store-vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: radial-gradient(ellipse at center, transparent 42%, rgb(0 0 0 / 0.62) 100%);
+}
+
+.store-glow {
+  pointer-events: none;
+  position: absolute;
+  z-index: 5;
+  border-radius: 999px;
+  mix-blend-mode: screen;
+  filter: blur(28px);
+}
+
+.store-glow-neon {
+  left: 4%;
+  top: 28%;
+  width: 120px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgb(0 245 212 / 0.45), transparent 70%);
+}
+
+.store-glow-shrine {
+  left: 50%;
+  top: 32%;
+  width: 240px;
+  height: 240px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgb(255 244 212 / 0.32), transparent 70%);
+}
+
+.store-pill {
+  display: inline-flex;
+  height: 2.25rem;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--color-gold) 55%, transparent);
+  background: color-mix(in oklab, var(--color-bg) 70%, transparent);
+  padding: 0 0.85rem;
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--color-fg);
+  backdrop-filter: blur(8px);
+}
+
+.store-tip {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 50%;
+  z-index: 22;
+  width: min(18rem, calc(100% - 2rem));
+  transform: translateX(-50%);
+  border: 1px solid color-mix(in oklab, var(--color-gold) 55%, transparent);
+  background: color-mix(in oklab, var(--color-bg) 78%, transparent);
+  padding: 0.9rem 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.spot-chip {
+  position: absolute;
+  z-index: 15;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--color-bg) 75%, transparent);
+  padding: 0.55rem 0.9rem;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  backdrop-filter: blur(8px);
+}
+
+.walk-pin {
+  height: 700vh;
+}
+
+.walk-sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.walk-world {
+  width: 400vw;
+  height: 300dvh;
+  will-change: transform;
+}
+
+.walk-cell {
+  position: absolute;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.walk-cell::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  box-shadow:
+    inset 0 0 120px color-mix(in oklab, var(--color-gold) 16%, transparent),
+    inset 0 0 80px color-mix(in oklab, var(--color-accent) 10%, transparent);
+}
+
+.house-smoke {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.smoke-layer {
+  position: absolute;
+  width: 160%;
+  height: 90%;
+  left: -30%;
+  border-radius: 45%;
+  filter: blur(48px);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+.smoke-a {
+  bottom: -25%;
+  background: radial-gradient(ellipse, rgb(244 234 216 / 0.22), transparent 68%);
+  animation: smoke-drift 22s ease-in-out infinite;
+}
+
+.smoke-b {
+  bottom: -10%;
+  left: -10%;
+  opacity: 0.32;
+  background: radial-gradient(ellipse, rgb(62 232 212 / 0.1), rgb(244 234 216 / 0.14) 40%, transparent 70%);
+  animation: smoke-drift 28s ease-in-out infinite reverse;
+}
+
+.smoke-c {
+  top: 10%;
+  height: 50%;
+  opacity: 0.2;
+  background: radial-gradient(ellipse, rgb(212 176 106 / 0.12), transparent 65%);
+  animation: smoke-drift 34s ease-in-out infinite;
+}
+
+@keyframes smoke-drift {
+  0% {
+    transform: translate3d(0, 8%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8%, -6%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(0, 8%, 0) scale(1);
+  }
+}
+
+.house-raymarch {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: block;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+}
+
+.house-volume {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  mix-blend-mode: screen;
+}
+
+.vol-origin {
+  position: absolute;
+  top: -4%;
+  left: 38%;
+  width: 24%;
+  height: 18%;
+  background: radial-gradient(ellipse, rgb(255 236 190 / 0.65), rgb(212 176 106 / 0.2) 40%, transparent 70%);
+  filter: blur(10px);
+  animation: vol-breathe 8s ease-in-out infinite;
+}
+
+.vol-rays {
+  position: absolute;
+  top: -15%;
+  left: 10%;
+  width: 80%;
+  height: 85%;
+  background: repeating-conic-gradient(
+    from 198deg at 50% 0%,
+    transparent 0deg,
+    rgb(212 176 106 / 0.09) 0.7deg,
+    transparent 1.6deg
+  );
+  mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.8), transparent 72%);
+  opacity: 0.55;
+  animation: vol-breathe 11s ease-in-out infinite;
+}
+
+.vol-shaft {
+  position: absolute;
+  top: -12%;
+  height: 135%;
+  filter: blur(16px);
+  animation: vol-breathe 9s ease-in-out infinite;
+}
+
+.vol-shaft-main {
+  left: 30%;
+  width: 32%;
+  background: linear-gradient(
+    180deg,
+    rgb(255 236 190 / 0.42) 0%,
+    rgb(212 176 106 / 0.18) 42%,
+    transparent 78%
+  );
+  clip-path: polygon(36% 0, 64% 0, 96% 100%, 4% 100%);
+}
+
+.vol-shaft-left {
+  left: 6%;
+  width: 20%;
+  opacity: 0.55;
+  background: linear-gradient(
+    180deg,
+    rgb(212 176 106 / 0.28) 0%,
+    rgb(212 176 106 / 0.08) 50%,
+    transparent 78%
+  );
+  clip-path: polygon(42% 0, 58% 0, 88% 100%, 12% 100%);
+  animation-delay: -3s;
+}
+
+.vol-shaft-miami {
+  top: 12%;
+  right: -8%;
+  left: auto;
+  width: 48%;
+  height: 70%;
+  filter: blur(22px);
+  background: linear-gradient(115deg, rgb(62 232 212 / 0.22), transparent 62%);
+  clip-path: polygon(0 28%, 100% 8%, 100% 72%, 0 58%);
+  animation-delay: -5s;
+}
+
+.vol-caustic {
+  position: absolute;
+  bottom: 6%;
+  left: 26%;
+  width: 48%;
+  height: 22%;
+  background: radial-gradient(ellipse, rgb(212 176 106 / 0.28), transparent 68%);
+  filter: blur(18px);
+  animation: vol-breathe 9s ease-in-out infinite;
+}
+
+.vol-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgb(255 236 190 / 0.7);
+  filter: blur(0.5px);
+  animation: vol-mote 14s linear infinite;
+}
+
+.vol-mote-1 {
+  left: 42%;
+  top: 30%;
+  animation-duration: 16s;
+}
+.vol-mote-2 {
+  left: 48%;
+  top: 44%;
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+.vol-mote-3 {
+  left: 55%;
+  top: 22%;
+  animation-duration: 18s;
+  animation-delay: -7s;
+}
+.vol-mote-4 {
+  left: 36%;
+  top: 58%;
+  animation-duration: 15s;
+  animation-delay: -2s;
+}
+.vol-mote-5 {
+  left: 62%;
+  top: 50%;
+  width: 2px;
+  height: 2px;
+  animation-duration: 20s;
+  animation-delay: -9s;
+}
+.vol-mote-6 {
+  left: 44%;
+  top: 70%;
+  animation-duration: 12s;
+  animation-delay: -6s;
+}
+
+@keyframes vol-breathe {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes vol-mote {
+  0% {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(18px, -120px, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .walk-pin {
+    height: auto;
+  }
+
+  .walk-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .walk-world {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .walk-cell {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .smoke-layer {
+    animation: none;
+  }
+
+  .vol-origin,
+  .vol-rays,
+  .vol-shaft,
+  .vol-caustic,
+  .vol-mote {
+    animation: none;
+  }
+}
